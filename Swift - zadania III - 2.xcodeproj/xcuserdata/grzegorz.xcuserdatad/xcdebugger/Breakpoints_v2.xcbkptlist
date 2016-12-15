@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Swift III/myTableViewCell.swift"
+            timestampString = "503227198.206156"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Swift III/UserData.swift"
+            timestampString = "503419816.591293"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "init(someData:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift___zadania_III___2.User.init (someData : Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Swift.Optional&lt;Swift___zadania_III___2.User&gt;"
+                  moduleName = "Swift - zadania III - 2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/grzegorz/Developer/Swift%20III%202/Swift%20III/UserData.swift"
+                  timestampString = "503421459.541854"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "1862">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift___zadania_III___2.User.init (someData : Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Swift.Optional&lt;Swift___zadania_III___2.User&gt;"
+                  moduleName = "Swift - zadania III - 2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/grzegorz/Developer/Swift%20III%202/Swift%20III/UserData.swift"
+                  timestampString = "503421459.545169"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "2071">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
