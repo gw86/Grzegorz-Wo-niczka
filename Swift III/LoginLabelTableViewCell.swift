@@ -1,5 +1,5 @@
 //
-//  SwiftIIITableViewCell.swift
+//  LoginLabelTableViewCell.swift
 //  Swift - zadania III - 2
 //
 //  Created by Grzegorz Woźniczka on 12/12/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SwiftIIITableViewCell: UITableViewCell {
+class LoginLabelTableViewCell: UITableViewCell {
    
     @IBOutlet weak var userLabel: UILabel!
     

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B25894981E01977200D6740E /* SwiftIIITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25894971E01977200D6740E /* SwiftIIITableViewCell.swift */; };
+		B25894981E01977200D6740E /* LoginLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25894971E01977200D6740E /* LoginLabelTableViewCell.swift */; };
 		B258949A1E0197C500D6740E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25894991E0197C500D6740E /* Configuration.swift */; };
 		B25894A01E019A9B00D6740E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B258949F1E019A9B00D6740E /* ViewController.swift */; };
 		B25894A21E019AFF00D6740E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B25894A11E019AFF00D6740E /* Main.storyboard */; };
@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B25894971E01977200D6740E /* SwiftIIITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftIIITableViewCell.swift; sourceTree = "<group>"; };
+		B25894971E01977200D6740E /* LoginLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLabelTableViewCell.swift; sourceTree = "<group>"; };
 		B25894991E0197C500D6740E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		B258949F1E019A9B00D6740E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B25894A11E019AFF00D6740E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				B258949F1E019A9B00D6740E /* ViewController.swift */,
-				B25894971E01977200D6740E /* SwiftIIITableViewCell.swift */,
+				B25894971E01977200D6740E /* LoginLabelTableViewCell.swift */,
 				B25928351E0036CA0043EBD5 /* DetailsViewController.swift */,
 				B25928331DFFE6500043EBD5 /* UserData.swift */,
 				B297AE2A1DF55CE1001C2A57 /* DataManager.swift */,
@@ -149,7 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B297AE2B1DF55CE1001C2A57 /* DataManager.swift in Sources */,
-				B25894981E01977200D6740E /* SwiftIIITableViewCell.swift in Sources */,
+				B25894981E01977200D6740E /* LoginLabelTableViewCell.swift in Sources */,
 				B25928341DFFE6500043EBD5 /* UserData.swift in Sources */,
 				B25928361E0036CA0043EBD5 /* DetailsViewController.swift in Sources */,
 				B258949A1E0197C500D6740E /* Configuration.swift in Sources */,
