@@ -10,6 +10,8 @@ import UIKit
 
 class DetailsViewController: UIViewController {
     
+    
+    
     @IBOutlet weak var loginOfUser: UILabel!
     @IBOutlet weak var urlOfUser: UILabel!
     @IBOutlet weak var avatarOfUser: UIImageView!
@@ -19,9 +21,9 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginOfUser.text = user.usersLogin
-        urlOfUser.text = user.usersURL
-        avatarOfUser.image = user.usersAvatar
+        loginOfUser.text = user.login
+        urlOfUser.text = user.uRL
+        avatarOfUser.image = user.avatar
      
     }
 }

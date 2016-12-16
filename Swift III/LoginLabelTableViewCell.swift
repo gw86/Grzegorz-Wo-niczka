@@ -12,7 +12,4 @@ class LoginLabelTableViewCell: UITableViewCell {
    
     @IBOutlet weak var userLabel: UILabel!
     
-    func configure(name: User) {
-        userLabel.text = name.usersLogin
     }
-}

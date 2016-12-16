@@ -10,25 +10,25 @@ import UIKit
 
 struct User {
     
-    var usersLogin: String?
-    var usersURL: String?
-    var usersAvatar: UIImage?
+    var login: String?
+    var uRL: String?
+    var avatar: UIImage?
     
     init?(someData: [String: Any]) {
         if let loginName = someData["login"]{
             
-            self.usersLogin = loginName as? String
+            self.login = loginName as? String
          }
         
         if let html_url = someData["html_url"]{
-            self.usersURL = html_url as? String
+            self.uRL = html_url as? String
         }
-        if let usersAvatar = someData["avatar_url"]{
+        if let avatar = someData["avatar_url"]{
 
-            let url = URL(string: usersAvatar as! String)
+            let url = URL(string: avatar as! String)
             let data = try? Data(contentsOf: url!)
             if let image = UIImage(data: data!){
-                self.usersAvatar = image
+                self.avatar = image
             }
         }
     }

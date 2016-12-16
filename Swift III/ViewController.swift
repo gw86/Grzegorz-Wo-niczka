@@ -23,8 +23,7 @@ class ViewController: UIViewController {
         tableViev.estimatedRowHeight = 125
         tableViev.rowHeight = UITableViewAutomaticDimension
         
-        
-        //        self.tableViev.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "messageCell")
+
         
         dataManager.loginData { (response, error) in
             
@@ -44,19 +43,33 @@ class ViewController: UIViewController {
         }
     }
 }
+var loginLabel: LoginLabelTableViewCell!
+
+
+
+
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.loginList.count
     }
     
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCellIdentifier", for: indexPath) as! SwiftIIITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCellIdentifier", for: indexPath) as! LoginLabelTableViewCell
         
         let name = loginList[indexPath.row]
-        cell.configure(name: name)
+        configure(name: name)
         
         return cell
+        
+    }
+    
+    func configure(name: User) {
+        loginLabel.userLabel.text = name.login
         
     }
     
@@ -71,4 +84,5 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 
         viewController.user = user
     }
+    
 }
