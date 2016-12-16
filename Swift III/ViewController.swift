@@ -43,9 +43,6 @@ class ViewController: UIViewController {
         }
     }
 }
-var loginLabel: LoginLabelTableViewCell!
-
-
 
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -53,23 +50,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return self.loginList.count
     }
     
-    
-    
-    
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCellIdentifier", for: indexPath) as! LoginLabelTableViewCell
         
-        let name = loginList[indexPath.row]
-        configure(name: name)
-        
+        let user = loginList[indexPath.row]
+        cell.userLabel.text = user.login
         return cell
-        
-    }
-    
-    func configure(name: User) {
-        loginLabel.userLabel.text = name.login
         
     }
     
