@@ -8,14 +8,39 @@
 
 import UIKit
 
-private let dataManager = DataManager(baseURL: API.BaseURL)
-
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableViev: UITableView!
     @IBOutlet weak var headerView: UIView!
     
     var loginList: [User] = []
+    let URL = API.BaseURL
+
+    
+    
+    
+    var responseData: [Dictionary<String, AnyObject>]?
+    
+    func loginData() -> AnyObject{
+
+        URLSession.shared.dataTask(with: URL) { (data, response, error) in
+            self.processLoginData(data: data!)
+            }.resume()
+        
+        return responseData! as AnyObject
+    }
+    
+    func processLoginData(data: Data) {
+        if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject {
+            responseData = JSON as? [Dictionary<String, AnyObject>]
+           
+        }
+        
+    }
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,23 +48,21 @@ class ViewController: UIViewController {
         tableViev.estimatedRowHeight = 125
         tableViev.rowHeight = UITableViewAutomaticDimension
         
+        
 
         
-        dataManager.loginData { (response, error) in
-            
-            if let results = response as? [Dictionary<String, AnyObject>]{
-                for result in results {
-                    if let login = User(someData: result) {
-                        self.loginList.append(login)
-                        
-                    }
+        if let results = loginData() as? [Dictionary<String, AnyObject>]{
+            for result in results {
+                if let login = User(someData: result) {
+                    self.loginList.append(login)
+                    
                 }
             }
-            DispatchQueue.main.async{
-                
-                self.tableViev.reloadData()
-                
-            }
+        }
+        DispatchQueue.main.async{
+            
+            self.tableViev.reloadData()
+            
         }
     }
 }
@@ -50,7 +73,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return self.loginList.count
     }
     
-
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -70,7 +93,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let viewController = segue.destination as! DetailsViewController
         let user = loginList[tableViev.indexPathForSelectedRow!.row]
-                
+        
         viewController.user = user
     }
     
