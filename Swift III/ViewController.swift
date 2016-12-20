@@ -17,8 +17,6 @@ class ViewController: UIViewController {
     let URL = API.BaseURL
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,51 +24,38 @@ class ViewController: UIViewController {
         tableViev.rowHeight = UITableViewAutomaticDimension
         
         
-         loginData { (AnyObject) in
-            
-            
+        loginData { (data) in
+            for result in data {
+                if let login = User(someData: result) {
+                    self.loginList.append(login)
+                    
+                }
+            }
+            DispatchQueue.main.async{
+                
+                self.tableViev.reloadData()
+                
+            }
         }
-        
-//        if let results = responseData    {
-//            for result in results {
-//                if let login = User(someData: result) {
-//                    self.loginList.append(login)
-//                    
-//                }
-//            }
-//        }
-//        DispatchQueue.main.async{
-//            
-//            self.tableViev.reloadData()
-//            
-//        }
     }
     
     func loginData(completion: @escaping ([Dictionary<String, AnyObject>]) -> ()){
         
         URLSession.shared.dataTask(with: URL) { (data, response, error) in
             
-            self.processLoginData(data: data!)
-     
+            completion(self.processLoginData(data: data!)!)
             
             }.resume()
-        
     }
-    
     
     func processLoginData(data: Data) -> [Dictionary<String, AnyObject>]?  {
         
         if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject
         {
-            
             return JSON as? [Dictionary<String, AnyObject>]
-            
         }
         return nil
     }
-    
-    
-    
 }
 
 
@@ -78,8 +63,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.loginList.count
     }
-    
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

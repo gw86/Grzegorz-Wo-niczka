@@ -15,7 +15,6 @@
 		B25928361E0036CA0043EBD5 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25928351E0036CA0043EBD5 /* DetailsViewController.swift */; };
 		B266CDEA1DF06ECF00CE06B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B266CDE91DF06ECF00CE06B7 /* AppDelegate.swift */; };
 		B266CDF11DF06ECF00CE06B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B266CDF01DF06ECF00CE06B7 /* Assets.xcassets */; };
-		B297AE2B1DF55CE1001C2A57 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297AE2A1DF55CE1001C2A57 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		B266CDE91DF06ECF00CE06B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B266CDF01DF06ECF00CE06B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B266CDF51DF06ECF00CE06B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B297AE2A1DF55CE1001C2A57 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +64,6 @@
 				B25894971E01977200D6740E /* LoginLabelTableViewCell.swift */,
 				B25928351E0036CA0043EBD5 /* DetailsViewController.swift */,
 				B25928331DFFE6500043EBD5 /* UserData.swift */,
-				B297AE2A1DF55CE1001C2A57 /* DataManager.swift */,
 				B25894991E0197C500D6740E /* Configuration.swift */,
 				B266CDE91DF06ECF00CE06B7 /* AppDelegate.swift */,
 				B266CDF01DF06ECF00CE06B7 /* Assets.xcassets */,
@@ -148,7 +145,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B297AE2B1DF55CE1001C2A57 /* DataManager.swift in Sources */,
 				B25894981E01977200D6740E /* LoginLabelTableViewCell.swift in Sources */,
 				B25928341DFFE6500043EBD5 /* UserData.swift in Sources */,
 				B25928361E0036CA0043EBD5 /* DetailsViewController.swift in Sources */,
