@@ -15,29 +15,6 @@ class ViewController: UIViewController {
     
     var loginList: [User] = []
     let URL = API.BaseURL
-
-    
-    
-    
-    var responseData: [Dictionary<String, AnyObject>]?
-    
-    func loginData() -> AnyObject{
-
-        URLSession.shared.dataTask(with: URL) { (data, response, error) in
-            self.processLoginData(data: data!)
-            }.resume()
-        
-        return responseData! as AnyObject
-    }
-    
-    func processLoginData(data: Data) {
-        if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject {
-            responseData = JSON as? [Dictionary<String, AnyObject>]
-           
-        }
-        
-    }
-    
     
     
     
@@ -49,22 +26,52 @@ class ViewController: UIViewController {
         tableViev.rowHeight = UITableViewAutomaticDimension
         
         
-
+         loginData { (AnyObject) in
+            
+            
+        }
         
-        if let results = loginData() as? [Dictionary<String, AnyObject>]{
-            for result in results {
-                if let login = User(someData: result) {
-                    self.loginList.append(login)
-                    
-                }
-            }
-        }
-        DispatchQueue.main.async{
-            
-            self.tableViev.reloadData()
-            
-        }
+//        if let results = responseData    {
+//            for result in results {
+//                if let login = User(someData: result) {
+//                    self.loginList.append(login)
+//                    
+//                }
+//            }
+//        }
+//        DispatchQueue.main.async{
+//            
+//            self.tableViev.reloadData()
+//            
+//        }
     }
+    
+    func loginData(completion: @escaping (AnyObject) -> ()){
+        
+        URLSession.shared.dataTask(with: URL) { (data, response, error) in
+            
+
+            let JSON = self.processLoginData(data: data!)
+            completion(JSON as AnyObject)
+
+            
+            }.resume()
+    }
+    
+    
+    func processLoginData(data: Data) -> [Dictionary<String, AnyObject>]?  {
+        
+        if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject
+        {
+            
+            return JSON as? [Dictionary<String, AnyObject>]
+            
+        }
+        return nil
+    }
+    
+    
+    
 }
 
 
