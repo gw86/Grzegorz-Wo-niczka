@@ -16,6 +16,11 @@ class ViewController: UIViewController {
     var loginList: [User] = []
     let URL = API.BaseURL
     
+    enum kindOfError: Error{
+        case Unknow
+        case FailedRequest
+        case InvalidResponse
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,22 +44,25 @@ class ViewController: UIViewController {
         }
     }
     
-    func loginData(completion: @escaping ([Dictionary<String, AnyObject>]) -> ()){
+    func loginData(completion: @escaping ([Dictionary<String, AnyObject>])throws -> ()){
         
         URLSession.shared.dataTask(with: URL) { (data, response, error) in
             
-            completion(self.processLoginData(data: data!)!)
+            try? completion(self.processLoginData(data: data!)!)
+            
             
             }.resume()
     }
     
-    func processLoginData(data: Data) -> [Dictionary<String, AnyObject>]?  {
+    func processLoginData(data: Data) throws -> [Dictionary<String, AnyObject>]?{
         
         if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject
         {
             return JSON as? [Dictionary<String, AnyObject>]
         }
-        return nil
+        else{
+throw kindOfError.InvalidResponse
+        }
     }
 }
 
