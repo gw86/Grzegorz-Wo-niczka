@@ -46,16 +46,15 @@ class ViewController: UIViewController {
 //        }
     }
     
-    func loginData(completion: @escaping (AnyObject) -> ()){
+    func loginData(completion: @escaping ([Dictionary<String, AnyObject>]) -> ()){
         
         URLSession.shared.dataTask(with: URL) { (data, response, error) in
             
-
-            let JSON = self.processLoginData(data: data!)
-            completion(JSON as AnyObject)
-
+            self.processLoginData(data: data!)
+     
             
             }.resume()
+        
     }
     
     
