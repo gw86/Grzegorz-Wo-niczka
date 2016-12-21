@@ -44,14 +44,16 @@ class ViewController: UIViewController {
         }
     }
     
-    func loginData(completion: @escaping ([Dictionary<String, AnyObject>])throws -> ()){
+    func loginData(completion: @escaping ([Dictionary<String, AnyObject>]) -> ()){
         
         URLSession.shared.dataTask(with: URL) { (data, response, error) in
+            
             do{
-           try self.didFetchLoginData(data: data, response: response, error: error)
-            }catch{
-            
-            
+                
+                try  completion(self.didFetchLoginData(data: data, response: response, error: error))
+            }
+            catch{
+                
             }
             
             }.resume()
@@ -59,11 +61,13 @@ class ViewController: UIViewController {
     
     
     
-    func didFetchLoginData(data: Data?, response: URLResponse?, error: Error?) throws {
+    func didFetchLoginData(data: Data?, response: URLResponse?, error: Error?) throws ->[Dictionary<String, AnyObject>]{
         
         if let data = data, let response = response as? HTTPURLResponse {
-            if response.statusCode == 200 {
-                try processLoginData(data: data)
+            
+            if error == nil {
+                
+                try processLoginData(data: data)throws->([Dictionary<String, AnyObject>])
                 
             } else {
                 throw kindOfError.FailedRequest
@@ -71,9 +75,10 @@ class ViewController: UIViewController {
         } else {
             throw kindOfError.Unknow
         }
+        return try processLoginData(data: data!)!
     }
     
-
+    
     func processLoginData(data: Data) throws -> [Dictionary<String, AnyObject>]?{
         
         if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject
