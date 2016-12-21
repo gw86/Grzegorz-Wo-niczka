@@ -13,15 +13,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableViev: UITableView!
     @IBOutlet weak var headerView: UIView!
     
+    @IBAction func showAlert() {
+        
+        let alertController = UIAlertController(title: "AlllleeeerTTT!", message: "What we can do?", preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
     var loginList: [User] = []
     let URL = API.BaseURL
     
-    enum kindOfError: Error{
-        case Unknow
-        case FailedRequest
-        case InvalidResponse
-    }
-    
+    //    enum kindOfError: Error{
+    //        case Unknow
+    //        case FailedRequest
+    //        case InvalidResponse
+    //    }
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,8 +40,14 @@ class ViewController: UIViewController {
         tableViev.rowHeight = UITableViewAutomaticDimension
         
         
-        loginData { (data) in
-            for result in data {
+        loginData { (data, error) in
+            if error != nil {
+                
+                //              self.showAlert()
+                
+            }
+            
+            for result in data! {
                 if let login = User(someData: result) {
                     self.loginList.append(login)
                     
@@ -44,52 +61,33 @@ class ViewController: UIViewController {
         }
     }
     
-    func loginData(completion: @escaping ([Dictionary<String, AnyObject>]) -> ()){
+    func loginData(completion: @escaping ([Dictionary<String, AnyObject>]?, Error?) -> ()){
         
         URLSession.shared.dataTask(with: URL) { (data, response, error) in
             
-            do{
-                
-                try  completion(self.didFetchLoginData(data: data, response: response, error: error))
-            }
-            catch{
-                
+            if let data = data, let response = response as? HTTPURLResponse {
+                if response.statusCode == 200{
+                    if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject
+                    {
+                        if let data = JSON as? [Dictionary<String, AnyObject>]{
+                            completion(data, nil)
+                        }
+                        else{
+                            completion(nil, error)
+                        }
+                    }
+                    else{
+                        completion(nil, error)
+                    }
+                }
+                else{
+                    completion(nil, error)                }
             }
             
             }.resume()
     }
-    
-    
-    
-    func didFetchLoginData(data: Data?, response: URLResponse?, error: Error?) throws ->[Dictionary<String, AnyObject>]{
-        
-        if let data = data, let response = response as? HTTPURLResponse {
-            
-            if error == nil {
-                
-                try processLoginData(data: data)throws->([Dictionary<String, AnyObject>])
-                
-            } else {
-                throw kindOfError.FailedRequest
-            }
-        } else {
-            throw kindOfError.Unknow
-        }
-        return try processLoginData(data: data!)!
-    }
-    
-    
-    func processLoginData(data: Data) throws -> [Dictionary<String, AnyObject>]?{
-        
-        if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject
-        {
-            return JSON as? [Dictionary<String, AnyObject>]
-        }
-        else{
-            throw kindOfError.InvalidResponse
-        }
-    }
 }
+
 
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
