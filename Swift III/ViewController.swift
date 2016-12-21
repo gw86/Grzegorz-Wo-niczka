@@ -43,13 +43,13 @@ class ViewController: UIViewController {
         loginData { (data, error) in
             if error != nil {
                 
-                //              self.showAlert()
-                
+                //              self.showAlert()  //wywietlać 
+                return
             }
             
-            for result in data! {
-                if let login = User(someData: result) {
-                    self.loginList.append(login)
+            for result in data! {                           //
+                if let login = User(someData: result) { // przenieść
+                    self.loginList.append(login)                //
                     
                 }
             }
@@ -61,26 +61,35 @@ class ViewController: UIViewController {
         }
     }
     
-    func loginData(completion: @escaping ([Dictionary<String, AnyObject>]?, Error?) -> ()){
+    func loginData(completion: @escaping ([User]?, Error?) -> ()){
         
         URLSession.shared.dataTask(with: URL) { (data, response, error) in
             
             if let data = data, let response = response as? HTTPURLResponse {
                 if response.statusCode == 200{
-                    if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject
-                    {
-                        if let data = JSON as? [Dictionary<String, AnyObject>]{
-                            completion(data, nil)
-                        }
-                        else{
-                            completion(nil, error)
-                        }
+                    
+                    do {
+                        let JSON = try JSONSerialization.jsonObject(with: data, options: []) as! [Dictionary<String, AnyObject>]
+                        completion(JSON, nil)
+                        
+                    } catch (let serializationError) {
+                        completion(nil, serializationError)
+
                     }
-                    else{
-                        completion(nil, error)
-                    }
-                }
-                else{
+                    
+//                    if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject
+//                    {
+//                        if let data = JSON as? [Dictionary<String, AnyObject>]{
+//                            completion(data, nil)
+//                        }
+//                        else{
+//                            completion(nil, error)
+//                        }
+//                    }
+//                    else{
+//                        completion(nil, error)
+//                    }
+                } else {
                     completion(nil, error)                }
             }
             
