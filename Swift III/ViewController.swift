@@ -47,13 +47,33 @@ class ViewController: UIViewController {
     func loginData(completion: @escaping ([Dictionary<String, AnyObject>])throws -> ()){
         
         URLSession.shared.dataTask(with: URL) { (data, response, error) in
+            do{
+           try self.didFetchLoginData(data: data, response: response, error: error)
+            }catch{
             
-            try? completion(self.processLoginData(data: data!)!)
             
+            }
             
             }.resume()
     }
     
+    
+    
+    func didFetchLoginData(data: Data?, response: URLResponse?, error: Error?) throws {
+        
+        if let data = data, let response = response as? HTTPURLResponse {
+            if response.statusCode == 200 {
+                try processLoginData(data: data)
+                
+            } else {
+                throw kindOfError.FailedRequest
+            }
+        } else {
+            throw kindOfError.Unknow
+        }
+    }
+    
+
     func processLoginData(data: Data) throws -> [Dictionary<String, AnyObject>]?{
         
         if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject
@@ -61,7 +81,7 @@ class ViewController: UIViewController {
             return JSON as? [Dictionary<String, AnyObject>]
         }
         else{
-throw kindOfError.InvalidResponse
+            throw kindOfError.InvalidResponse
         }
     }
 }
