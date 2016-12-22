@@ -18,13 +18,13 @@ struct User {
         if let loginName = someData["login"]{
             
             self.login = loginName as? String
-         }
+        }
         
         if let html_url = someData["html_url"]{
             self.uRL = html_url as? String
         }
         if let avatar = someData["avatar_url"]{
-
+            
             let url = URL(string: avatar as! String)
             let data = try? Data(contentsOf: url!)
             if let image = UIImage(data: data!){

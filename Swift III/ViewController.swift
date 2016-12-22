@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     @IBAction func showAlert() {
         
-        let alertController = UIAlertController(title: "AlllleeeerTTT!", message: "What we can do?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Alert", message: "\(errorMessageForUser)", preferredStyle: .alert)
         
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(defaultAction)
@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     
     var loginList: [User] = []
     let URL = API.BaseURL
+    var errorMessageForUser = ""
     
     //    enum kindOfError: Error{
     //        case Unknow
@@ -42,11 +43,15 @@ class ViewController: UIViewController {
         
         loginData { (data, error) in
             if error != nil {
-                
-                self.showAlert()  //wywietlać
+                DispatchQueue.main.async{
+                    self.errorMessageForUser = (error?.localizedDescription)!
+                    self.showAlert()  //wywietlać
+                }
                 return
             }
-            
+            if let data = data {
+                self.loginList = data
+            }
             DispatchQueue.main.async{
                 
                 self.tableViev.reloadData()
@@ -63,26 +68,26 @@ class ViewController: UIViewController {
                 if response.statusCode == 200{
                     
                     do {
+                        var list = [User]()
                         let JSON = try JSONSerialization.jsonObject(with: data, options: []) as! [Dictionary<String, AnyObject>]
                         for result in JSON {
                             if let login = User(someData: result) {
-                                self.loginList.append(login)
-                                
+                                list.append(login)
                             }
                             
                         }
-                        completion(self.loginList, error)
+                        completion(list, error)
                         
                     } catch (let serializationError) {
                         completion(nil, serializationError)
-                        
                     }
                     
-                    
                 } else {
-                    completion(nil, error)                }
+                    completion(nil, error)
+                }
+            } else {
+                completion(nil, error)
             }
-            
             }.resume()
     }
 }
