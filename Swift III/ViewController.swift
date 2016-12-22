@@ -43,16 +43,10 @@ class ViewController: UIViewController {
         loginData { (data, error) in
             if error != nil {
                 
-                //              self.showAlert()  //wywietlać 
+                self.showAlert()  //wywietlać
                 return
             }
             
-            for result in data! {                           //
-                if let login = User(someData: result) { // przenieść
-                    self.loginList.append(login)                //
-                    
-                }
-            }
             DispatchQueue.main.async{
                 
                 self.tableViev.reloadData()
@@ -70,25 +64,25 @@ class ViewController: UIViewController {
                     
                     do {
                         let JSON = try JSONSerialization.jsonObject(with: data, options: []) as! [Dictionary<String, AnyObject>]
-                        completion(JSON, nil)
+                        //  completion(JSON, nil)
+                        for result in JSON {
+                            if let login = User(someData: result) {
+                                self.loginList.append(login)
+                                 print(login)
+                                
+                            } //else{
+                               // completion(nil, error)
+                            //}
+                            
+                        }
+                        completion(self.loginList, error)
                         
                     } catch (let serializationError) {
                         completion(nil, serializationError)
-
+                        
                     }
                     
-//                    if let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as AnyObject
-//                    {
-//                        if let data = JSON as? [Dictionary<String, AnyObject>]{
-//                            completion(data, nil)
-//                        }
-//                        else{
-//                            completion(nil, error)
-//                        }
-//                    }
-//                    else{
-//                        completion(nil, error)
-//                    }
+                    
                 } else {
                     completion(nil, error)                }
             }
