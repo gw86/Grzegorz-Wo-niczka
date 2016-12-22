@@ -13,27 +13,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableViev: UITableView!
     @IBOutlet weak var headerView: UIView!
     
-    @IBAction func showAlert() {
-        
-        let alertController = UIAlertController(title: "Alert", message: "\(errorMessageForUser)", preferredStyle: .alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(defaultAction)
-        
-        present(alertController, animated: true, completion: nil)
-        
-    }
     
     var loginList: [User] = []
     let URL = API.BaseURL
-    var errorMessageForUser = ""
     
-    //    enum kindOfError: Error{
-    //        case Unknow
-    //        case FailedRequest
-    //        case InvalidResponse
-    //    }
-    //
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,8 +27,9 @@ class ViewController: UIViewController {
         loginData { (data, error) in
             if error != nil {
                 DispatchQueue.main.async{
-                    self.errorMessageForUser = (error?.localizedDescription)!
-                    self.showAlert()  //wywietlać
+                    
+                    
+                    self.showAlert(error: (error?.localizedDescription)! as String)
                 }
                 return
             }
@@ -65,7 +49,7 @@ class ViewController: UIViewController {
         URLSession.shared.dataTask(with: URL) { (data, response, error) in
             
             if let data = data, let response = response as? HTTPURLResponse {
-                if response.statusCode == 200{
+                if response.statusCode == 200 {
                     
                     do {
                         var list = [User]()
@@ -90,6 +74,18 @@ class ViewController: UIViewController {
             }
             }.resume()
     }
+    
+    func showAlert(error: String) {
+        
+        let alertController = UIAlertController(title: "Alert", message:error, preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+
 }
 
 
