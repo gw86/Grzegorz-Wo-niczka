@@ -64,15 +64,11 @@ class ViewController: UIViewController {
                     
                     do {
                         let JSON = try JSONSerialization.jsonObject(with: data, options: []) as! [Dictionary<String, AnyObject>]
-                        //  completion(JSON, nil)
                         for result in JSON {
                             if let login = User(someData: result) {
                                 self.loginList.append(login)
-                                 print(login)
                                 
-                            } //else{
-                               // completion(nil, error)
-                            //}
+                            }
                             
                         }
                         completion(self.loginList, error)
