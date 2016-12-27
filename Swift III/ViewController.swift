@@ -48,30 +48,28 @@ class ViewController: UIViewController {
         
         URLSession.shared.dataTask(with: URL) { (data, response, error) in
             
-            if let data = data, let response = response as? HTTPURLResponse {
-                if response.statusCode == 200 {
-                    
-                    do {
-                        var list = [User]()
-                        let JSON = try JSONSerialization.jsonObject(with: data, options: []) as! [Dictionary<String, AnyObject>]
-                        for result in JSON {
-                            if let login = User(someData: result) {
-                                list.append(login)
-                            }
-                            
-                        }
-                        completion(list, error)
-                        
-                    } catch (let serializationError) {
-                        completion(nil, serializationError)
-                    }
-                    
-                } else {
+            do {
+                if data != data {
                     completion(nil, error)
                 }
-            } else {
-                completion(nil, error)
+                let response = response as! HTTPURLResponse
+                if response.statusCode != 200 {
+                    completion(nil, error)
+                }
+                var list = [User]()
+                let JSON = try JSONSerialization.jsonObject(with: data!, options: []) as! [Dictionary<String, AnyObject>]
+                for result in JSON {
+                    if let login = User(someData: result) {
+                        list.append(login)
+                    }
+                    
+                }
+                completion(list, error)
+                
+            } catch (let serializationError) {
+                completion(nil, serializationError)
             }
+            
             }.resume()
     }
     
@@ -85,7 +83,7 @@ class ViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
         
     }
-
+    
 }
 
 

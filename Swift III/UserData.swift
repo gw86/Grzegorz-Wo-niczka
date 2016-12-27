@@ -1,5 +1,5 @@
 //
-//  guardForLogins.swift
+//  UserData.swift
 //  Swift III
 //
 //  Created by Grzegorz Woźniczka on 13/12/2016.
