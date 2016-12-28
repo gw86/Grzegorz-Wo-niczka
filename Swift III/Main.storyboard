@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2Ld-5h-p1r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2Ld-5h-p1r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,10 +32,10 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kqs-yn-Pgn" id="8kS-uj-FfS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="UsersLogin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7i-pU-N5d" userLabel="UsersLogin">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UsersLogin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7i-pU-N5d" userLabel="UsersLogin">
                                                     <rect key="frame" x="8" y="7" width="359" height="34.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -44,8 +44,8 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.92003765028116213" green="1" blue="0.90340890205161661" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstItem="Q7i-pU-N5d" firstAttribute="top" secondItem="8kS-uj-FfS" secondAttribute="topMargin" id="MqW-Is-pOH"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Q7i-pU-N5d" secondAttribute="bottom" id="XBI-RA-LcT"/>
+                                                <constraint firstItem="Q7i-pU-N5d" firstAttribute="top" secondItem="8kS-uj-FfS" secondAttribute="topMargin" constant="-1" id="MqW-Is-pOH"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Q7i-pU-N5d" secondAttribute="bottom" constant="1.5" id="XBI-RA-LcT"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Q7i-pU-N5d" secondAttribute="trailing" id="aNG-Pq-1UK"/>
                                                 <constraint firstItem="Q7i-pU-N5d" firstAttribute="leading" secondItem="8kS-uj-FfS" secondAttribute="leadingMargin" id="rF1-X2-cMa"/>
                                             </constraints>
@@ -92,10 +92,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q7h-E5-zKj">
-                                <rect key="frame" x="20" y="64" width="560" height="536"/>
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="center" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pHk-du-xCX">
-                                        <rect key="frame" x="205" y="0.0" width="150" height="150"/>
+                                        <rect key="frame" x="96.5" y="0.0" width="150" height="150"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="center" axis="vertical" distribution="fillProportionally" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Kpv-nS-sKy">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -109,16 +109,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LfS-bY-99W">
-                                        <rect key="frame" x="232" y="150" width="97" height="386"/>
+                                        <rect key="frame" x="123.5" y="150" width="96.5" height="453"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="User Login" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHW-qe-9vf">
-                                                <rect key="frame" x="0.0" y="0.0" width="97" height="355"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="96.5" height="422.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="User URL" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ws-kh-W0A">
-                                                <rect key="frame" x="12" y="365" width="73" height="21"/>
+                                                <rect key="frame" x="11.5" y="432.5" width="73" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

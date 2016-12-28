@@ -49,15 +49,14 @@ class ViewController: UIViewController {
         URLSession.shared.dataTask(with: URL) { (data, response, error) in
             
             do {
-                if data != data {
+                guard let data = data else {
                     completion(nil, error)
+                    return
                 }
-                let response = response as! HTTPURLResponse
-                if response.statusCode != 200 {
-                    completion(nil, error)
-                }
+                
                 var list = [User]()
-                let JSON = try JSONSerialization.jsonObject(with: data!, options: []) as! [Dictionary<String, AnyObject>]
+                
+                let JSON = try JSONSerialization.jsonObject(with: data, options: []) as! [Dictionary<String, AnyObject>]
                 for result in JSON {
                     if let login = User(someData: result) {
                         list.append(login)
